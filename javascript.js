@@ -1,14 +1,8 @@
-const playButton = document.getElementById("playButton");
-
 function getComputerChoice() {
-    const randomNum = Math.floor(Math.random() * 3 + 1);
+    const randomNum = Math.floor(Math.random() * 3);
 
-    if (randomNum === 1) {
-        return "rock";
-    }
-    if (randomNum === 2) {
-        return "paper";
-    }
+    if (randomNum === 0) return "rock";
+    if (randomNum === 1) return "paper";
     return "scissors";
 }
 
@@ -23,96 +17,64 @@ function getHumanChoice() {
     return humanInput;
 }
 
-function determineWinner(computer, human) {
-    if (computer === "rock" && human === "paper") {
-        console.log("Human wins!! Paper beats Rock ");
-        return "computer";
+function playRound(computerChoice, humanChoice) {
+    if (computerChoice === humanChoice) {
+        console.log(`It's a draw!! Both chose ${humanChoice}`);
+        return "draw";
     }
-    if (computer === "paper" && human === "scissors") {
-        console.log("Human wins!! Scissors beats paper");
-        return "computer";
-    }
-    if (computer === "scissors" && human === "rock") {
-        console.log("Human wins!! Rock beats Scissors");
-        return "computer";
-    }
-    if (computer === "rock" && human === "scissors") {
-        console.log("Computer wins!! Rock beats Scissors");
+    if (
+        (computerChoice === "paper" && humanChoice === "scissors") ||
+        (computerChoice === "rock" && humanChoice === "paper") ||
+        (computerChoice === "paper" && humanChoice === "scissors")
+    ) {
+        console.log(`Human wins!! ${humanChoice} beats ${computerChoice}`);
         return "human";
     }
-    if (computer === "paper" && human === "rock") {
-        console.log("Computer wins!! Paper beats Rock");
-        return "human";
-    }
-    if (computer === "scissors" && human === "paper") {
-        console.log("Computer wins!! Scissors beats Paper");
-        return "human";
-    }
-    console.log(`It's a draw!! ${human} and ${computer} is the same`);
-    return "draw";
-}
-
-function playRound() {
-    return determineWinner(getComputerChoice(), getHumanChoice());
+    console.log(`Computer wins!! ${computerChoice} beats ${humanChoice}`);
+    return "computer";
 }
 
 function playGame() {
-    let humanPoints = 0;
-    let computerPoints = 0;
+    let humanScore = 0;
+    let computerScore = 0;
 
-    switch (playRound()) {
-        case "computer":
-            computerPoints++;
-            break;
-        case "human":
-            humanPoints++;
-            break;
-    }
+    // Round 1
+    console.log("Round 1!");
+    const result1 = playRound(getComputerChoice(), getHumanChoice());
+    if (result1 === "human") humanScore++;
+    if (result1 === "computer") computerScore++;
 
-    switch (playRound()) {
-        case "computer":
-            computerPoints++;
-            break;
-        case "human":
-            humanPoints++;
-            break;
-    }
+    // Round 2
+    console.log("Round 2!");
+    const result2 = playRound(getComputerChoice(), getHumanChoice());
+    if (result2 === "human") humanScore++;
+    if (result2 === "computer") computerScore++;
 
-    switch (playRound()) {
-        case "computer":
-            computerPoints++;
-            break;
-        case "human":
-            humanPoints++;
-            break;
-    }
+    // Round 3
+    console.log("Round 3!");
+    const result3 = playRound(getComputerChoice(), getHumanChoice());
+    if (result3 === "human") humanScore++;
+    if (result3 === "computer") computerScore++;
 
-    switch (playRound()) {
-        case "computer":
-            computerPoints++;
-            break;
-        case "human":
-            humanPoints++;
-            break;
-    }
+    // Round 4
+    console.log("Round 4!");
+    const result4 = playRound(getComputerChoice(), getHumanChoice());
+    if (result4 === "human") humanScore++;
+    if (result4 === "computer") computerScore++;
 
-    switch (playRound()) {
-        case "computer":
-            computerPoints++;
-            break;
-        case "human":
-            humanPoints++;
-            break;
-    }
+    // Round 5
+    console.log("Round 5!");
+    const result5 = playRound(getComputerChoice(), getHumanChoice());
+    if (result5 === "human") humanScore++;
+    if (result5 === "computer") computerScore++;
 
-    switch (playRound()) {
-        case "computer":
-            computerPoints++;
-            break;
-        case "human":
-            humanPoints++;
-            break;
+    if (humanScore > computerScore) {
+        console.log(`Human beats computer!! Human score: ${humanScore}, Computer score: ${computerScore}`);
+    } else if (humanScore > computerScore) {
+        console.log(`Computer beats computer!! Human score: ${humanScore}, Computer score: ${computerScore}`);
+    } else {
+        console.log(`Computer beats computer!! Human score: ${humanScore}, Computer score: ${computerScore}`);
     }
 }
 
-playButton.addEventListener("click", playGame);
+playGame();
