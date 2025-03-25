@@ -3,8 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Rock Paper Scissors</title>
-    <script src="./javascript.js" defer></script>
+
+    <script src="./src/main.js" defer></script>
+    <link rel="stylesheet" href="./src/main.css" />
   </head>
-  <body></body>
+  <body>
+    <div class="card">
+      <h1>Rock Paper Scissors</h1>
+      <div class="button-wrapper">
+        <button class="button button--rock">Rock</button>
+        <button class="button button--paper">Paper</button>
+        <button class="button button--scissors">Scissors</button>
+      </div>
+      <div>
+        <p class="current-text"></p>
+        <h2>Current score:</h2>
+        <ul>
+          <li>Your Score: <span class="human-score">0</span></li>
+          <li>Computer Score: <span class="computer-score">0</span></li>
+        </ul>
+      </div>
+    </div>
+  </body>
 </html>

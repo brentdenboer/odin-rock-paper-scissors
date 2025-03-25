@@ -1,0 +1,17 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.card {
+  padding: 10px;
+  border: 1px solid gray;
+}
+
+.button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
